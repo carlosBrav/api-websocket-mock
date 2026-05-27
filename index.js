@@ -10,12 +10,17 @@ const whiteList = [
 ];
 
 app.use(cors({
-  origin: whiteList,
+  origin: '*',
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 })); // permite todos los orígenes
 app.use(express.json());
+
+app.get('/api/hello',(req,res)=>{
+  res.json({mensaje:"probando servidor"
+           })
+})
 
 const wss = new WebSocketServer({ port: 3000 });
 console.log("🚀 Servidor WebSocket de producción/prueba corriendo en ws://localhost:3000");
