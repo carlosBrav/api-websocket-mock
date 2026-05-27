@@ -7,7 +7,7 @@ const {createServer} = require('http')
 const PORT = process.env.PORT || 3000;
 const whiteList = [
   'http://localhost:5173',
-  'https://effervescent-sundae-bbbab3.netlify.app'
+  'https://poc-front-ws.netlify.app/'
 ];
 
 app.use(cors({
