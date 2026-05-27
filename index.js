@@ -2,6 +2,7 @@ const { WebSocketServer } = require('ws');
 const cors = require('cors');
 const express = require('express');
 const app = express();
+const {createServer} = require('http')
 
 const PORT = process.env.PORT || 3000;
 const whiteList = [
@@ -21,6 +22,8 @@ app.get('/api/hello',(req,res)=>{
   res.json({mensaje:"probando servidor"
            })
 })
+
+const server = createServer(app)
 
 const wss = new WebSocketServer({ port: 3000 });
 console.log("🚀 Servidor WebSocket de producción/prueba corriendo en ws://localhost:3000");
