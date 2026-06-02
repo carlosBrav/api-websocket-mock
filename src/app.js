@@ -6,7 +6,6 @@ const WebSocketServerManager = require('./core/websocket/websocket.server');
 const WebSocketBroadcast = require('./core/websocket/websocket.broadcast');
 const ProviderRegistry = require('./core/providers/provider.registry');
 const ProviderManager = require('./core/providers/provider.manager');
-//const EzugiAdapter = require('./providers/ezugi/ezugi.adapter');
 const EvolutionAdapter = require('./providers/evolution/evolution.adapter')
 const EvolutionNormalizer = require('./providers/evolution/evolution.normalizer')
 const PragmaticAdapter = require('./providers/pragmatic/pragmatic.adapter')
