@@ -2,7 +2,7 @@ const { WebSocketServer } = require('ws');
 const cors = require('cors');
 const express = require('express');
 const { createServer } = require('http');
-
+const EzugiAdapter = require('./src/adapters/ezugi.adapter');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -22,55 +22,54 @@ app.get('/api/hello', (req, res) => {
   });
 });
 
-// Creamos UN SOLO servidor HTTP
 const server = createServer(app);
 
-// WebSocket montado SOBRE el mismo server HTTP
 const wss = new WebSocketServer({ server });
 
-console.log("🚀 WebSocket inicializado");
+console.log("🚀 WebSocket Server inicializado");
 
-// Registro de clientes
 const clientes = new Set();
 
+
+function broadcast(payload) {
+
+  const message = JSON.stringify(payload);
+
+  clientes.forEach((cliente) => {
+
+    if (cliente.readyState === 1) {
+
+      cliente.send(message);
+    }
+  });
+}
+
+const ezugi = new EzugiAdapter((normalizedMessage) => {
+
+  console.log('📩 provider message');
+  broadcast({
+    event: 'casino_data',
+    data: normalizedMessage
+  });
+});
+
+ezugi.connect();
+
 wss.on('connection', (ws) => {
+
   clientes.add(ws);
 
   console.log(`👤 Cliente conectado. Total: ${clientes.size}`);
 
-  ws.on('message', (message) => {
-    try {
-      const paquete = JSON.parse(message);
-
-      if (paquete.event === "recibir_informacion") {
-
-        console.log("📩 Payload:", paquete.data);
-
-        const respuesta = JSON.stringify({
-          event: "enviar_informacion",
-          data: paquete.data
-        });
-
-        clientes.forEach((cliente) => {
-          if (cliente.readyState === 1) {
-            cliente.send(respuesta);
-          }
-        });
-      }
-
-    } catch (error) {
-      console.error("❌ Error JSON:", error);
-    }
-  });
-
   ws.on('close', () => {
+
     clientes.delete(ws);
+
     console.log(`❌ Cliente desconectado. Total: ${clientes.size}`);
   });
 });
 
-// IMPORTANTE:
-// usar server.listen y NO app.listen
 server.listen(PORT, () => {
-  console.log(`🚀 Servidor listo en puerto ${PORT}`);
+
+  console.log(`🚀 Server listo puerto ${PORT}`);
 });
