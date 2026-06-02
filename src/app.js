@@ -51,15 +51,7 @@ registry.register(
   new EvolutionAdapter(broadcaster,new EvolutionNormalizer())
 );
 
-/* registry.register(
-  'pragmatic',
-  new PragmaticAdapter(broadcaster, new PragmaticNormalizer())
-);
-registry.register(
-  'playtech',
-  new PlayTechAdapter(broadcaster, new PlayTechNormalizer())
-)
- */
+
 const providerManager =
   new ProviderManager(registry);
 
