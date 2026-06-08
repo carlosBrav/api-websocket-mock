@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2022",                          /* Versión moderna de JS */
+    "target": "ES2020",                          /* Versión moderna de JS */
     "module": "commonjs",                        /* Estándar para Node.js */
     "rootDir": "./src",                          /* Dónde está tu código fuente */
     "outDir": "./dist",                          /* Dónde se guardará el código compilado */
