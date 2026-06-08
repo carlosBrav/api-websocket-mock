@@ -1,0 +1,2817 @@
+
+
+========== EVOLUTION RESPONSE 1 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027796-0",
+  "type": "DealerHandUpdated",
+  "tableId": "bciewncrf5ijneys",
+  "dealerHand": [
+    13,
+    18,
+    19,
+    20,
+    22,
+    23,
+    21,
+    25,
+    26,
+    21
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 2 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027797-0",
+  "type": "DealerHandUpdated",
+  "tableId": "SpeedBlackjack01",
+  "dealerHand": [
+    19,
+    17,
+    24,
+    19,
+    19,
+    19,
+    18,
+    20,
+    18,
+    23
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 3 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027798-0",
+  "type": "DealerHandUpdated",
+  "tableId": "nbjef7nohawangw2",
+  "dealerHand": [
+    13,
+    18,
+    24,
+    19,
+    22,
+    17,
+    14,
+    17,
+    19,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 4 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027799-0",
+  "type": "DealerHandUpdated",
+  "tableId": "PortBJ0000000001",
+  "dealerHand": [
+    11,
+    20,
+    23,
+    20,
+    21,
+    21,
+    19,
+    18,
+    26,
+    19
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 5 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027801-0",
+  "type": "SeatsUpdated",
+  "tableId": "o735ggd5iwsswcz7",
+  "seatsTaken": [
+    0,
+    3
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 6 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027802-0",
+  "type": "DealerHandUpdated",
+  "tableId": "qaossmtwsqx7n2yv",
+  "dealerHand": [
+    21,
+    18,
+    21,
+    22,
+    18,
+    21,
+    19,
+    23,
+    24,
+    17
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 7 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027803-0",
+  "type": "DealerHandUpdated",
+  "tableId": "SpeedBlackjack04",
+  "dealerHand": [
+    10,
+    23,
+    21,
+    9,
+    17,
+    14,
+    18,
+    21,
+    20,
+    11
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 8 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027804-0",
+  "type": "PlayersUpdated",
+  "tableId": "sfdbyhu5gpln5rpp",
+  "players": 8
+}
+
+
+
+========== EVOLUTION RESPONSE 9 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027804-1",
+  "type": "SeatsUpdated",
+  "tableId": "sfdbyhu5gpln5rpp",
+  "seatsTaken": [
+    4,
+    0,
+    2,
+    6,
+    1
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 10 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027805-0",
+  "type": "DealerHandUpdated",
+  "tableId": "nrgrpmxusbsdh2wt",
+  "dealerHand": [
+    17,
+    20,
+    19,
+    22,
+    17,
+    23,
+    20,
+    21,
+    21,
+    25
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 11 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027806-0",
+  "type": "DealerHandUpdated",
+  "tableId": "o735hfcqauecwjxp",
+  "dealerHand": [
+    16,
+    21,
+    21,
+    18,
+    20,
+    26,
+    25,
+    18,
+    18,
+    23
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 12 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027807-0",
+  "type": "DealerHandUpdated",
+  "tableId": "o4kww67qxqqayf2y",
+  "dealerHand": [
+    0,
+    18,
+    21,
+    17,
+    21,
+    21,
+    19,
+    19,
+    20,
+    17
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 13 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027808-0",
+  "type": "BaccaratRoadUpdated",
+  "tableId": "qsf63ownyvbqnz33",
+  "history": [
+    "P",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "P",
+    "B",
+    "B",
+    "B",
+    "P",
+    "B",
+    "T",
+    "B",
+    "T",
+    "B",
+    "B",
+    "P",
+    "P",
+    "P",
+    "P",
+    "B",
+    "P",
+    "B",
+    "B",
+    "P",
+    "B",
+    "B",
+    "P",
+    "P",
+    "P",
+    "P",
+    "B",
+    "B",
+    "P",
+    "B",
+    "P",
+    "B",
+    "P",
+    "B",
+    "P",
+    "B"
+  ],
+  "road": [
+    {
+      "location": {
+        "column": 0,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 3,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 1,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 2,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 3,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 4,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 5,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 1,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 10,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 10,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 2,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 12,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 12,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 13,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 15,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 15,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 15,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 15,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 1
+      },
+      "ties": 1,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 2
+      },
+      "ties": 1,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 17,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 18,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 18,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 18,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 19,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 1,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 20,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 20,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 20,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 20,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 20,
+        "row": 4
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 21,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    }
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 14 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027809-0",
+  "type": "DealerHandUpdated",
+  "tableId": "ndefkmdiofgqoavl",
+  "dealerHand": [
+    7,
+    17,
+    20,
+    21,
+    21,
+    19,
+    24,
+    18,
+    19,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 15 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027810-0",
+  "type": "PlayersUpdated",
+  "tableId": "o735cjzyaeasv4o6",
+  "players": 16
+}
+
+
+
+========== EVOLUTION RESPONSE 16 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027810-1",
+  "type": "SeatsUpdated",
+  "tableId": "o735cjzyaeasv4o6",
+  "seatsTaken": [
+    4,
+    1,
+    0,
+    2,
+    3
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 17 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027811-0",
+  "type": "DealerHandUpdated",
+  "tableId": "mfvvadncvibqbxbt",
+  "dealerHand": [
+    0,
+    24,
+    19,
+    18,
+    24,
+    23,
+    26,
+    25,
+    17,
+    24
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 18 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027812-0",
+  "type": "DealerHandUpdated",
+  "tableId": "rpjvse45mruw7nbx",
+  "dealerHand": [
+    25,
+    17,
+    26,
+    17,
+    17,
+    24,
+    21,
+    20,
+    20,
+    23
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 19 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027813-0",
+  "type": "DealerHandUpdated",
+  "tableId": "l7fieyuccxiaef2k",
+  "dealerHand": [
+    21,
+    25,
+    19,
+    21,
+    19,
+    23,
+    22,
+    21,
+    22,
+    25
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 20 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027814-0",
+  "type": "BaccaratRoadUpdated",
+  "tableId": "o4kymodby2fa2c7g",
+  "history": [
+    "B",
+    "B",
+    "P",
+    "B",
+    "B",
+    "B",
+    "B",
+    "P",
+    "B",
+    "P",
+    "P",
+    "T",
+    "P",
+    "P",
+    "P",
+    "B",
+    "P",
+    "T",
+    "T",
+    "B",
+    "B",
+    "B",
+    "B",
+    "P",
+    "T",
+    "B",
+    "B",
+    "P",
+    "P",
+    "P",
+    "B",
+    "B",
+    "B",
+    "B",
+    "P",
+    "B",
+    "B",
+    "B",
+    "P",
+    "P",
+    "B"
+  ],
+  "road": [
+    {
+      "location": {
+        "column": 0,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 1,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 1,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 2,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 2,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 2,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 3,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 4,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 4,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 4,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 4,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 5,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 5,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 5,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 1
+      },
+      "ties": 1,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 3
+      },
+      "ties": 2,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 10,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 2
+      },
+      "ties": 1,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 4
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 12,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 13,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 3,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 15,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    }
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 21 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027815-0",
+  "type": "PlayersUpdated",
+  "tableId": "ruojlwketcjrsirr",
+  "players": 5
+}
+
+
+
+========== EVOLUTION RESPONSE 22 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027815-1",
+  "type": "SeatsUpdated",
+  "tableId": "ruojlwketcjrsirr",
+  "seatsTaken": [
+    3
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 23 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027816-0",
+  "type": "DealerHandUpdated",
+  "tableId": "qfyzapjqrixfb3bx",
+  "dealerHand": [
+    10,
+    22,
+    18,
+    26,
+    20,
+    17,
+    18,
+    18,
+    14,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 24 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027817-0",
+  "type": "DealerHandUpdated",
+  "tableId": "PorBJ00000000011",
+  "dealerHand": [
+    0,
+    26,
+    18,
+    19,
+    19,
+    20,
+    18,
+    18,
+    20,
+    17
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 25 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027818-0",
+  "type": "DealerHandUpdated",
+  "tableId": "nl7mgk3hy4xar3ji",
+  "dealerHand": [
+    10,
+    21,
+    23,
+    18,
+    23,
+    23,
+    19,
+    20,
+    17,
+    25
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 26 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027819-0",
+  "type": "SeatsUpdated",
+  "tableId": "mwplrb43theqikrf",
+  "seatsTaken": [
+    4,
+    6,
+    0
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 27 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027820-0",
+  "type": "DealerHandUpdated",
+  "tableId": "m6wzvco3xyladkvj",
+  "dealerHand": [
+    0,
+    21,
+    22,
+    16,
+    21,
+    12,
+    18,
+    20,
+    20,
+    19
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 28 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027821-0",
+  "type": "DealerHandUpdated",
+  "tableId": "l4u6m3qgk5faaflp",
+  "dealerHand": [
+    0,
+    15,
+    19,
+    20,
+    21,
+    16,
+    18,
+    20,
+    18,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 29 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027822-0",
+  "type": "SeatsUpdated",
+  "tableId": "uwd2bl2khwcikjlz",
+  "seatsTaken": [
+    4,
+    5,
+    0,
+    2,
+    3,
+    6,
+    1
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 30 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027823-0",
+  "type": "SeatsUpdated",
+  "tableId": "PorBJ00000000002",
+  "seatsTaken": [
+    4,
+    5,
+    6,
+    0,
+    3
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 31 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027824-0",
+  "type": "DealerHandUpdated",
+  "tableId": "PorBJ00000000008",
+  "dealerHand": [
+    0,
+    15,
+    13,
+    22,
+    21,
+    22,
+    19,
+    23,
+    12,
+    22
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 32 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027825-0",
+  "type": "DealerHandUpdated",
+  "tableId": "qaosyoe7ftm3oi6w",
+  "dealerHand": [
+    0,
+    22,
+    20,
+    18,
+    20,
+    22,
+    25,
+    19,
+    19,
+    17
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 33 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027826-0",
+  "type": "DealerHandUpdated",
+  "tableId": "o5t5x6oip3jdbfcg",
+  "dealerHand": [
+    23,
+    18,
+    20,
+    26,
+    20,
+    26,
+    25,
+    18,
+    17,
+    22
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 34 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027827-0",
+  "type": "DealerHandUpdated",
+  "tableId": "pdkxl2euz4ieg4iz",
+  "dealerHand": [
+    9,
+    25,
+    20,
+    24,
+    20,
+    18,
+    18,
+    21,
+    20,
+    22
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 35 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027828-0",
+  "type": "SeatsUpdated",
+  "tableId": "PorBJ00000000001",
+  "seatsTaken": [
+    4,
+    5,
+    6,
+    2,
+    3
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 36 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027829-0",
+  "type": "DealerHandUpdated",
+  "tableId": "svosbntus6yap3ab",
+  "dealerHand": [
+    0,
+    20,
+    22,
+    18,
+    19,
+    24,
+    20,
+    18,
+    17,
+    22
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 37 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027830-0",
+  "type": "DealerHandUpdated",
+  "tableId": "nohedgkjiypk7zja",
+  "dealerHand": [
+    17,
+    17,
+    18,
+    20,
+    19,
+    18,
+    23,
+    23,
+    19,
+    21
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 38 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027831-0",
+  "type": "DealerHandUpdated",
+  "tableId": "o735hfcqauecwjxp",
+  "dealerHand": [
+    15,
+    21,
+    21,
+    18,
+    20,
+    26,
+    25,
+    18,
+    18,
+    23
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 39 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027832-0",
+  "type": "BaccaratRoadUpdated",
+  "tableId": "LightningBac0001",
+  "history": [
+    "P",
+    "T",
+    "T",
+    "T",
+    "P",
+    "B",
+    "P",
+    "B",
+    "B",
+    "P",
+    "P",
+    "B",
+    "B",
+    "P",
+    "B",
+    "B",
+    "B",
+    "B",
+    "P",
+    "P",
+    "P",
+    "P",
+    "B",
+    "B",
+    "B",
+    "T",
+    "P",
+    "B",
+    "P",
+    "P",
+    "B",
+    "T",
+    "T",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "P",
+    "P",
+    "P",
+    "P",
+    "T",
+    "P",
+    "B",
+    "B",
+    "B",
+    "B",
+    "T",
+    "B",
+    "B",
+    "P",
+    "B",
+    "T",
+    "P",
+    "B",
+    "P",
+    "B",
+    "B",
+    "T",
+    "B"
+  ],
+  "road": [
+    {
+      "location": {
+        "column": 0,
+        "row": 0
+      },
+      "ties": 1,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 6,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 0,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 0,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 1,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 2,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 3,
+        "row": 0
+      },
+      "ties": 1,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 4,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 5,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": true,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 1
+      },
+      "ties": 1,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 4
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 6,
+        "row": 5
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 0
+      },
+      "ties": 1,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 7,
+        "row": 4
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 4
+      },
+      "ties": 2,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 3,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 8,
+        "row": 5
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 9,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 10,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 11,
+        "row": 0
+      },
+      "ties": 1,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 12,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 12,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 12,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 13,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": true,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 13,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 13,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 3,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 13,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 2
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 8,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 14,
+        "row": 3
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 15,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 8,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": true,
+      "multiplier": {
+        "color": "Yellow"
+      },
+      "score": 4,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 16,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 17,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 9,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 17,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 18,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 6,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 18,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 5,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 19,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 3,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 20,
+        "row": 0
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": true,
+      "lightning": false,
+      "score": 9,
+      "color": "Red"
+    },
+    {
+      "location": {
+        "column": 21,
+        "row": 0
+      },
+      "ties": 3,
+      "playerPair": false,
+      "bankerPair": true,
+      "natural": false,
+      "lightning": false,
+      "score": 7,
+      "color": "Blue"
+    },
+    {
+      "location": {
+        "column": 21,
+        "row": 1
+      },
+      "ties": 0,
+      "playerPair": false,
+      "bankerPair": false,
+      "natural": false,
+      "lightning": false,
+      "score": 4,
+      "color": "Blue"
+    }
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 40 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027833-0",
+  "type": "DealerHandUpdated",
+  "tableId": "o5wt3yukp3jf7enf",
+  "dealerHand": [
+    10,
+    22,
+    19,
+    20,
+    23,
+    20,
+    17,
+    24,
+    22,
+    18
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 41 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027834-0",
+  "type": "SeatsUpdated",
+  "tableId": "mwpl22lktheqikxc",
+  "seatsTaken": [
+    1,
+    2,
+    3
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 42 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027835-0",
+  "type": "DealerHandUpdated",
+  "tableId": "skxbycofk4oqcs5r",
+  "dealerHand": [
+    0,
+    26,
+    20,
+    19,
+    22,
+    20,
+    19,
+    18,
+    17,
+    18
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 43 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027836-0",
+  "type": "DealerHandUpdated",
+  "tableId": "PortBJ0000000001",
+  "dealerHand": [
+    21,
+    20,
+    23,
+    20,
+    21,
+    21,
+    19,
+    18,
+    26,
+    19
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 44 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027837-0",
+  "type": "SeatsUpdated",
+  "tableId": "o4kww67qxqqayf2y",
+  "seatsTaken": [
+    4,
+    5,
+    0,
+    2,
+    6,
+    1
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 45 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027838-0",
+  "type": "DealerHandUpdated",
+  "tableId": "p7nfnb7k436fi5zm",
+  "dealerHand": [
+    15,
+    20,
+    18,
+    22,
+    23,
+    22,
+    21,
+    21,
+    25,
+    22
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 46 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027839-0",
+  "type": "DealerHandUpdated",
+  "tableId": "pdk523jney6upzft",
+  "dealerHand": [
+    0,
+    21,
+    21,
+    23,
+    17,
+    18,
+    25,
+    24,
+    19,
+    14
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 47 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027840-0",
+  "type": "DealerHandUpdated",
+  "tableId": "nbjef7nohawangw2",
+  "dealerHand": [
+    21,
+    18,
+    24,
+    19,
+    22,
+    17,
+    14,
+    17,
+    19,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 48 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027841-0",
+  "type": "DealerHandUpdated",
+  "tableId": "PorBJ00000000004",
+  "dealerHand": [
+    21,
+    23,
+    26,
+    20,
+    24,
+    19,
+    19,
+    19,
+    18,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 49 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027842-0",
+  "type": "DealerHandUpdated",
+  "tableId": "svgesa7lcjjqhhqx",
+  "dealerHand": [
+    21,
+    24,
+    23,
+    25,
+    17,
+    17,
+    20,
+    20,
+    17,
+    20
+  ]
+}
+
+
+
+========== EVOLUTION RESPONSE 50 ==========
+
+{
+  "id": "acitype000000001-q4qLJwOveG-62027843-0",
+  "type": "DealerHandUpdated",
+  "tableId": "PorBJ00000000010",
+  "dealerHand": [
+    0,
+    20,
+    19,
+    19,
+    22,
+    26,
+    17,
+    18,
+    21,
+    20
+  ]
+}
+
