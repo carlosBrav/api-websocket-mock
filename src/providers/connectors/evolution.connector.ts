@@ -206,7 +206,7 @@ export class EvolutionConnector {
 
   private processEvent(message: EvMessage): void {
     //console.log(`[Evolution] Evento: ${message.type} | ID: ${message.id}`);
-    console.log("MESSAGE ", message)
+    //console.log("MESSAGE ", message)
     switch (message.type) {
       case "state":
       case "State":
