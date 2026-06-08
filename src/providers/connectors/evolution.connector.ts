@@ -88,7 +88,7 @@ export class EvolutionConnector {
   };
 
   constructor(onMessage: (payload: unknown) => void) {
-    this.loggerFile = new WebSocketLogger({providerName: "evolution", maxMessages: 50})
+    this.loggerFile = new WebSocketLogger({providerName: "evolution", maxMessages: 200})
     this.onMessage = onMessage;
     if (
       !this.config.licenseeHostname ||
@@ -172,7 +172,7 @@ export class EvolutionConnector {
           }
  */ 
           this.processEvent(message);
-          //this.loggerFile?.save(message)
+          this.loggerFile?.save(message)
         } catch (err: any) {
           console.error("[WSS] Error al procesar el frame:", err.message);
         }

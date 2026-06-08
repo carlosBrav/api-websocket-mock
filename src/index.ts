@@ -45,7 +45,7 @@ async function bootstrap() {
     } */
   });
 
-  //startEvolution(lobbyStateManager, new EvolutionAdapter());
+  startEvolution(lobbyStateManager, new EvolutionAdapter());
   //startEzugi(lobbyStateManager, new EzugiAdapter());
   //startPragmatic(lobbyStateManager, new PragmaticAdapter());
   //startPlaytech(lobbyStateManager, new PlaytechAdapter());

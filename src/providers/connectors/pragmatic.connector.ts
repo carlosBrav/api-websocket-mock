@@ -39,7 +39,7 @@ export class PragmaticConnector {
   };
 
   constructor(onMessage: (payload: unknown) => void) {
-    this.loggerFile = new WebSocketLogger({providerName: "pragmatic", maxMessages: 50})
+    this.loggerFile = new WebSocketLogger({providerName: "pragmatic", maxMessages: 200})
     this.onMessage = onMessage;
     if (!this.config.casinoId || this.config.tableIds.length === 0 || !this.config.tableIds[0]) {
       throw new Error('[Pragmatic] Faltan variables críticas (CASINO_ID o TABLE_IDS) en el .env');

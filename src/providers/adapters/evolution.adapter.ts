@@ -4,6 +4,7 @@ import { ProviderAdapter } from "./base.adapter";
 
 export class EvolutionAdapter extends ProviderAdapter {
   normalize(payload: any): LobbyTablePatch | null {
+    console.log("PAYLOAD ", payload)
     if (payload.type === "players_updated" || payload.type === 'PlayersUpdated') {
       return {
         external_id: `evolution_${payload.tableId}`,
