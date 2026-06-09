@@ -7,7 +7,7 @@ import { RedisStateRepository } from '../../infrastructure/redis/redis-state.rep
 export class LobbyStateManager {
   private currentLobbyState = new Map<string, LobbyTablePatch>();
   private readonly stateTimestamps = new Map<string, number>();
-  private readonly STATE_TTL_MS = parseInt(process.env.STATE_TTL_MS || '300000', 10);
+  private readonly STATE_TTL_MS = parseInt(process.env.STATE_TTL_MS || '3600000', 10);
 
   constructor(
     private sessionManager: SessionManager,
