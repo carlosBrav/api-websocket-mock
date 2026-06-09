@@ -1,6 +1,8 @@
 import WebSocket from 'ws';
 import dotenv from 'dotenv';
 import { WebSocketLogger } from '../../utils/logger-file';
+import { IngestionQueue } from '../../core/services/ingestion-queue';
+import { IProviderConnector } from './base.connector';
 
 // Cargar variables de entorno
 dotenv.config();
@@ -14,19 +16,14 @@ interface PragmaticConfig {
 }
 
 // --- CLASE CONECTOR ---
-export class PragmaticConnector {
+export class PragmaticConnector implements IProviderConnector {
   private ws: WebSocket | null = null;
   private isConnecting = false;
   private pingTimeout: NodeJS.Timeout | null = null;
-   private loggerFile: WebSocketLogger| null = null
-
-  /**
-   * Callback inyectado desde app.ts.
-   * Recibe el payload crudo y lo entrega al adapter → LobbyStateManager.
-   */
+  private loggerFile: WebSocketLogger | null = null;
+  private readonly ingestionQueue = new IngestionQueue();
+  readonly name = 'Pragmatic';
   private onMessage: (payload: unknown) => void;
-
-  // Parámetros de reconexión (Backoff Exponencial + Jitter)
   private baseDelay = 1000;
   private maxDelay = 30000;
   private currentAttempt = 0;
@@ -39,16 +36,13 @@ export class PragmaticConnector {
   };
 
   constructor(onMessage: (payload: unknown) => void) {
-    this.loggerFile = new WebSocketLogger({providerName: "pragmatic", maxMessages: 200})
+    this.loggerFile = new WebSocketLogger({ providerName: "pragmatic", maxMessages: 200 })
     this.onMessage = onMessage;
     if (!this.config.casinoId || this.config.tableIds.length === 0 || !this.config.tableIds[0]) {
       throw new Error('[Pragmatic] Faltan variables críticas (CASINO_ID o TABLE_IDS) en el .env');
     }
   }
 
-  /**
-   * Conecta al servidor WebSocket Seguro (WSS)
-   */
   public connect(): void {
     if (this.isConnecting || (this.ws && this.ws.readyState === WebSocket.OPEN)) {
       return;
@@ -67,17 +61,12 @@ export class PragmaticConnector {
     this.ws.on('close', (code: number, reason: string) => this.handleClose(code, reason));
   }
 
-  /**
-   * Handshake físico completado. Envía suscripción de datos.
-   */
   private handleOpen(): void {
     console.log('[WSS] ¡Conexión física abierta con éxito!');
     this.isConnecting = false;
     this.currentAttempt = 0; // Resetear intentos de reconexión
 
     this.heartbeat();
-
-    // Mensaje mandatorio inicial para Pragmatic DGA
     const subscriptionMessage = {
       type: 'subscribe',
       isDeltaEnabled: true,
@@ -90,9 +79,6 @@ export class PragmaticConnector {
     this.ws?.send(JSON.stringify(subscriptionMessage));
   }
 
-  /**
-   * Recepción y lectura de eventos del feed DGA
-   */
   private handleMessage(rawData: WebSocket.Data): void {
     this.heartbeat(); // Refrescar el contador tras recibir actividad
 
@@ -103,27 +89,21 @@ export class PragmaticConnector {
       const payload = JSON.parse(messageString);
 
       if (payload && payload.tableId) {
-        //console.log(`[Pragmatic] Evento mesa: ${payload.tableId}`);
-        // Pasar el payload crudo al callback para que lo normalice el adapter
         this.loggerFile?.save(payload)
-        this.onMessage(payload);
+        this.ingestionQueue.enqueue(() => this.onMessage(payload));
       } else {
         console.log('[Pragmatic] Mensaje de sistema recibido:', payload);
       }
     } catch (error: any) {
       console.error('[WSS] Error parseando JSON entrante:', error.message);
+      this.loggerFile?.saveOnlyError(JSON.stringify({"type_message": "ERROR", "data": rawData}))
     }
   }
 
-  /**
-   * Temporizador de Vida (Heartbeat) contra conexiones huérfanas
-   */
   private heartbeat(): void {
     if (this.pingTimeout) {
       clearTimeout(this.pingTimeout);
     }
-
-    // Tolerancia de 35s esperando actividad del servidor
     this.pingTimeout = setTimeout(() => {
       console.warn('[WSS] Timeout detectado (Inactividad prolongada). Forzando cierre...');
       this.terminateConnection();
@@ -132,7 +112,7 @@ export class PragmaticConnector {
 
   private handlePing(): void {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-      this.ws.pong(); // Responder con pong nativo
+      this.ws.pong();
     }
     this.heartbeat();
   }
@@ -188,5 +168,24 @@ export class PragmaticConnector {
         this.ws.terminate(); // Cierre rudo e inmediato a nivel TCP
       } catch (err) { }
     }
+  }
+
+  public async start(): Promise<void> {
+    this.connect();
+  }
+
+  public async dispose(): Promise<void> {
+    if (this.pingTimeout) {
+      clearTimeout(this.pingTimeout);
+      this.pingTimeout = null;
+    }
+    if (this.ws) {
+      this.ws.removeAllListeners();
+      this.ws.terminate();
+      this.ws = null;
+    }
+    this.isConnecting = false;
+    this.currentAttempt = 0;
+    console.log('[Pragmatic] Conector desconectado por inactividad.');
   }
 }

@@ -15,71 +15,81 @@ import { PlaytechAdapter } from './providers/adapters/playtech.adapter';
 import { EzugiAdapter } from './providers/adapters/ezugi.adapter';
 import { EzugiConnector } from './providers/connectors/ezugi.connector';
 import { DefaultSubscriptionValidator } from './core/strategies/default-subscription.validator';
+import { createRedisClient } from './infrastructure/redis/redis.client';
+import { RedisStateRepository } from './infrastructure/redis/redis-state.repository';
+import { RedisPubSubService } from './infrastructure/redis/redis-pubsub.service';
 import { ProviderOrchestrator } from './core/services/provider-orchestrator';
+import { VALID_PROVIDER_IDS } from './core/models/subscription.model';
 
-const REDIS_ENABLED = process.env.REDIS_ENABLED === 'true';
 const PORT = parseInt(process.env.WS_PORT || '3000', 10);
-//const WS_PATH = '/api/v1/lobby/realtime';
+const REDIS_ENABLED = process.env.REDIS_ENABLED === 'true';
 
 async function bootstrap() {
-  console.log('Iniciando api-mesas-vivos-bff...\n');
+  console.log(`[BFF] Iniciando api-mesas-vivos-bff (Redis: ${REDIS_ENABLED ? 'ON' : 'OFF'})...\n`);
+
   const app = express();
   const httpServer = createServer(app);
 
+  // ── Redis ──────────────────────────────────────────────────────────────────
+  let redisRepo: RedisStateRepository | undefined;
+  let redisPubSub: RedisPubSubService | undefined;
+
+  if (REDIS_ENABLED) {
+    const publisher = createRedisClient();
+    const subscriber = publisher.duplicate();
+
+    await publisher.connect();
+    await subscriber.connect();
+
+    redisRepo = new RedisStateRepository(publisher);
+    redisPubSub = new RedisPubSubService(publisher, subscriber);
+
+    console.log('[BFF] Servicios Redis inicializados.');
+  }
   const sessionManager = new SessionManager();
-  const lobbyStateManager = new LobbyStateManager(sessionManager);
-  const validator       = new DefaultSubscriptionValidator(); 
+  const lobbyStateManager = new LobbyStateManager(sessionManager, redisRepo, redisPubSub);
 
-      // ── Proveedores ────────────────────────────────────────────────────────────
-    const evolutionConnector = startEvolution(lobbyStateManager, new EvolutionAdapter());
-    // startEzugi(lobbyStateManager, new EzugiAdapter());
-    const pragmaticConnector = startPragmatic(lobbyStateManager, new PragmaticAdapter());
-    // startPlaytech(lobbyStateManager, new PlaytechAdapter());
+    // ── Proveedores ────────────────────────────────────────────────────────────
+  const evolutionConnector = startEvolution(lobbyStateManager, new EvolutionAdapter());
+  // startEzugi(lobbyStateManager, new EzugiAdapter());
+  const pragmaticConnector = startPragmatic(lobbyStateManager, new PragmaticAdapter());
+  // startPlaytech(lobbyStateManager, new PlaytechAdapter());
 
+
+  const validator = new DefaultSubscriptionValidator();
   const orchestrator = new ProviderOrchestrator(
-    [
-      evolutionConnector as EvolutionConnector,
-       pragmaticConnector as PragmaticConnector
-    ]);
+    [evolutionConnector as EvolutionConnector, 
+    pragmaticConnector as PragmaticConnector
+    ], redisPubSub);
   const gateway = new LobbyGateway(sessionManager, validator, lobbyStateManager, orchestrator);
 
-  /* const { lobbyRealtimeRouter } = await import('./api/routes/lobbyRealTime');
-  app.use('/api/v1', lobbyRealtimeRouter); */
+
+  if (redisPubSub) {
+    await redisPubSub.subscribeToProviders(
+      [...VALID_PROVIDER_IDS],
+      (providerId: number, rawMessage: string) => {
+        // providerId viene del canal — rawMessage se reenvía sin tocar
+        const targets = sessionManager.getSubscribedClientsByProvider(providerId);
+        if (targets.length === 0) return;
+        for (const client of targets) {
+          if (client.ws.readyState === client.ws.OPEN) {
+            client.ws.send(rawMessage);
+          }
+        }
+      }
+    );
+  }
+
 
   httpServer.on('upgrade', (request, socket, head) => {
     gateway.handleUpgrade(request, socket as any, head);
-   /*  const url = request.url ?? '';
-
-    if (url === WS_PATH) {
-      gateway.handleUpgrade(request, socket as any, head);
-    } else {
-      socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
-      socket.destroy();
-    } */
   });
-
-   app.get('/health', (_req, res) => {
-  const mem = process.memoryUsage();
-  res.json({
-    status: 'ok',
-    uptime: `${process.uptime().toFixed(0)}s`,
-    redis: REDIS_ENABLED ? 'enabled' : 'disabled',
-    memory: {
-      heapUsed:  `${(mem.heapUsed  / 1024 / 1024).toFixed(1)} MB`,
-      heapTotal: `${(mem.heapTotal / 1024 / 1024).toFixed(1)} MB`,
-      rss:       `${(mem.rss       / 1024 / 1024).toFixed(1)} MB`,
-    },
-  });
-});
 
   httpServer.listen(PORT, () => {
     console.log(`[BFF] WebSocket disponible en ws://localhost:${PORT}`);
   });
 }
 
-// ---------------------------------------------------------------------------
-// Evolution Gaming — HTTP snapshot + WebSocket streaming
-// ---------------------------------------------------------------------------
 function startEvolution(lobbyStateManager: LobbyStateManager, adapter: EvolutionAdapter): EvolutionConnector | null {
   try {
     const connector = new EvolutionConnector((rawPayload: unknown) => {
@@ -108,53 +118,42 @@ function startPragmatic(lobbyStateManager: LobbyStateManager, adapter: Pragmatic
   }
 }
 
-// ---------------------------------------------------------------------------
-// Playtech — Kafka mTLS streaming
-// ---------------------------------------------------------------------------
 function startPlaytech(lobbyStateManager: LobbyStateManager, adapter: PlaytechAdapter): void {
   try {
     const connector = new PlaytechConnector((rawPayload: unknown) => {
       const patch = adapter.normalize(rawPayload);
       if (patch) lobbyStateManager.updateTableState(patch);
     });
-
     connector.fetchInitialState().then(({ tables, fatalError }) => {
       if (fatalError) {
-        console.error('[Playtech] Arranque abortado por error fatal. connectKafkaStreaming() no será llamado.');
+        console.error('[Playtech] Arranque abortado por error fatal.');
         return;
       }
       console.log(`[Playtech] Snapshot inicial: ${tables.length} mesas`);
       connector.connectKafkaStreaming();
     });
-
   } catch (err: any) {
     console.error('[Playtech] No se pudo iniciar:', err.message);
   }
 }
 
-function startEzugi(
-  lobbyStateManager: LobbyStateManager,
-  adapter: EzugiAdapter,
-): void {
+function startEzugi(lobbyStateManager: LobbyStateManager, adapter: EzugiAdapter): void {
   try {
     const connector = new EzugiConnector((rawPayload: unknown) => {
       const patch = adapter.normalize(rawPayload);
       if (patch) lobbyStateManager.updateTableState(patch);
     });
-
     connector.fetchInitialState().then(({ tables, fatalError }) => {
       if (fatalError) {
-        console.error('[Ezugi] Arranque abortado por error fatal en el snapshot HTTP. connectStreaming() no será llamado.');
+        console.error('[Ezugi] Arranque abortado por error fatal.');
         return;
       }
-      console.log(`[Ezugi] Snapshot inicial: ${tables.length} mesas`);
       tables.forEach((table) => {
         const patch = adapter.normalize({ type: 'table_assigned', id: 'initial', table });
         if (patch) lobbyStateManager.updateTableState(patch);
       });
       connector.connectStreaming();
     });
-
   } catch (err: any) {
     console.error('[Ezugi] No se pudo iniciar:', err.message);
   }

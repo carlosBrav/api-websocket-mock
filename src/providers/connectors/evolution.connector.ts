@@ -2,6 +2,8 @@ import WebSocket from "ws";
 import axios from "axios";
 import dotenv from "dotenv";
 import { WebSocketLogger } from "../../utils/logger-file";
+import { IngestionQueue } from "../../core/services/ingestion-queue";
+import { IProviderConnector } from "./base.connector";
 
 dotenv.config();
 
@@ -65,16 +67,14 @@ type EvMessage =
   | EvSeatsUpdatedMessage
   | EvPlayersUpdatedMessage;
 
-export class EvolutionConnector {
+export class EvolutionConnector implements IProviderConnector {
   private ws: WebSocket | null = null;
   private isConnecting = false;
   private lastEventNr = 0;
-  private loggerFile: WebSocketLogger| null = null
+  private loggerFile: WebSocketLogger | null = null
+  private readonly ingestionQueue = new IngestionQueue();
+  readonly name = 'Evolution';
 
-  /**
-   * Callback inyectado desde app.ts.
-   * Recibe el payload crudo y lo entrega al adapter → LobbyStateManager.
-   */
   private onMessage: (payload: unknown) => void;
 
   private config = {
@@ -88,7 +88,8 @@ export class EvolutionConnector {
   };
 
   constructor(onMessage: (payload: unknown) => void) {
-    this.loggerFile = new WebSocketLogger({providerName: "evolution", maxMessages: 200})
+
+    this.loggerFile = new WebSocketLogger({ providerName: "evolution", maxMessages: 200 })
     this.onMessage = onMessage;
     if (
       !this.config.licenseeHostname ||
@@ -126,25 +127,24 @@ export class EvolutionConnector {
     };
   }
 
-  public async fetchInitialState(): Promise<{ tables: EvTable[]; fatalError: boolean }>  {
+  public async fetchInitialState(): Promise<{ tables: EvTable[]; fatalError: boolean }> {
     const { httpUrl } = this.getEndpoints();
     try {
       console.log(`[HTTP] Solicitando estado base: ${httpUrl}`);
-      console.log("this.getAuthHeader() ", this.getAuthHeader())
       const response = await axios.get<{ tables: EvTable[] }>(httpUrl, {
         timeout: 10000,
         headers: { Authorization: this.getAuthHeader() },
       });
       console.log("[HTTP] Conectado al http ", response?.data?.tables)
-      return {tables: response.data.tables || [], fatalError: false};
+      return { tables: response.data.tables || [], fatalError: false };
     } catch (error: any) {
       // 401 = credenciales inválidas → detener reintentos, alerta crítica
       if (error.response?.status === 401) {
         console.error('[HTTP][Evolution] ALERTA CRÍTICA: Autenticación rechazada (401). Verificar EVOLUTION_CASINO_KEY y EVOLUTION_API_TOKEN. Abortando reconexión automática.');
-        return {tables:  [], fatalError: true}; // NO reconectar — requiere intervención manual
+        return { tables: [], fatalError: true }; // NO reconectar — requiere intervención manual
       }
       console.error('[HTTP][Evolution] Error obteniendo estado inicial:', error.message);
-      return {tables:  [], fatalError: false};
+      return { tables: [], fatalError: false };
     }
   }
 
@@ -167,14 +167,15 @@ export class EvolutionConnector {
         try {
           const raw = data.toString();
           const message = JSON.parse(raw) as EvMessage;
-         /*  if (message.id) {
-            this.handleSequencing(message.id);
-          }
- */ 
-          this.processEvent(message);
+          /*  if (message.id) {
+             this.handleSequencing(message.id);
+           }
+  */
           this.loggerFile?.save(message)
+          this.processEvent(message);
         } catch (err: any) {
           console.error("[WSS] Error al procesar el frame:", err.message);
+          this.loggerFile?.saveOnlyError(JSON.stringify({"type_message": "ERROR", "data": data}))
         }
       });
 
@@ -212,11 +213,11 @@ export class EvolutionConnector {
       case "State":
         // Batch inicial: normalizamos cada mesa como un TABLE_OPENED
         for (const table of message.tables) {
-          this.onMessage({
+          this.ingestionQueue.enqueue(() => this.onMessage({
             type: "table_assigned",
             id: message.id,
             table,
-          });
+          }));
         }
         break;
 
@@ -224,31 +225,31 @@ export class EvolutionConnector {
       case "table_updated":
       case "TableAssigned":
       case "TableUpdated":
-        this.onMessage({
+        this.ingestionQueue.enqueue(() => this.onMessage({
           type: message.type,
           id: message.id,
           table: message.table,
-        });
+        }));
         break;
 
       case "table_closed":
       case "TableClosed":
-        this.onMessage({ type: "table_closed", id: message.id, tableId: message.tableId });
+        this.ingestionQueue.enqueue(() => this.onMessage({ type: "table_closed", id: message.id, tableId: message.tableId }));
         break;
 
       case "seats_updated":
       case "SeatsUpdated":
-        this.onMessage({ type: "seats_updated", id: message.id, tableId: message.tableId, seats: message.seats });
+        this.ingestionQueue.enqueue(() => this.onMessage({ type: "seats_updated", id: message.id, tableId: message.tableId, seats: message.seats }));
         break;
 
       case "players_updated":
       case "PlayersUpdated":
-        this.onMessage({
+        this.ingestionQueue.enqueue(() => this.onMessage({
           type: "players_updated",
           id: message.id,
           tableId: message.tableId,
           playersCount: message.playersCount,
-        });
+        }));
         break;
     }
   }
@@ -288,6 +289,21 @@ export class EvolutionConnector {
     setTimeout(() => {
       this.connectStreaming();
     }, delay);
+  }
+
+  public async start(): Promise<void> {
+    this.connectStreaming();
+  }
+
+  public async dispose(): Promise<void> {
+    if (this.ws) {
+      this.ws.removeAllListeners();
+      this.ws.close();
+      this.ws = null;
+    }
+    this.isConnecting = false;
+    this.lastEventNr = 0;
+    console.log('[Evolution] Conector desconectado por inactividad.');
   }
 }
 

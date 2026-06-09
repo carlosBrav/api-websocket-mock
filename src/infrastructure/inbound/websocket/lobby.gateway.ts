@@ -4,28 +4,19 @@ import crypto from 'crypto';
 import { IncomingMessage } from 'http';
 import { Socket } from 'net';
 import { ISubscriptionValidationStrategy } from '../../../core/strategies/subscription-validation.strategy';
-import { normalizeProviderTypes } from '../../../core/models/subscription.model';
+import { LobbyStateManager } from '../../../core/services/lobby-state.manager';
+import { ALL_PROVIDER_IDS } from '../../../core/models/subscription.model';
+import { ProviderOrchestrator } from '../../../core/services/provider-orchestrator';
 
-/* interface SubscriptionMessage {
-  external_id: string;
-  game_type: string;
-} */
-
-/* function isValidSubscriptionMessage(data: unknown): data is SubscriptionMessage {
-  if (typeof data !== 'object' || data === null) return false;
-  const msg = data as Record<string, unknown>;
-  return (
-    typeof msg.external_id === 'string' && msg.external_id.trim() !== '' &&
-    typeof msg.game_type === 'string' && msg.game_type.trim() !== ''
-  );
-} */
-
+const MAX_CLIENTS = parseInt(process.env.MAX_WS_CLIENTS || '500', 10);
 export class LobbyGateway {
   private wss: WebSocketServer;
 
   constructor(
     private sessionManager: SessionManager,
     private validator: ISubscriptionValidationStrategy,
+    private lobbyStateManager?: LobbyStateManager,
+    private orchestrator?: ProviderOrchestrator,
   ) {
     this.wss = new WebSocketServer({ noServer: true });
     this.init();
@@ -41,13 +32,16 @@ export class LobbyGateway {
     console.log('[Gateway] WebSocket listo (montado sobre servidor HTTP)');
 
     this.wss.on('connection', (ws: WSClient) => {
+      if (this.sessionManager.getTotalSessionCount() >= MAX_CLIENTS) {
+        ws.send(JSON.stringify({ event: 'REJECTED', message: 'Servidor al límite de capacidad.' }));
+        ws.close(1013, 'Try Again Later');
+        return;
+      }
       const clientId = crypto.randomUUID();
       this.sessionManager.addSession(clientId, ws);
       console.log(`[Gateway] Nuevo cliente conectado. ID: ${clientId}`);
-      // Flag: todavía no ha enviado el mensaje inicial válido
       let subscribed = false;
-      ws.on('message', (raw: Buffer | string) => {
-        // Si ya está suscrito, ignorar mensajes posteriores (o procesarlos si se necesita)
+      ws.on('message', async (raw: Buffer | string) => {
         if (subscribed) return;
 
         try {
@@ -60,7 +54,8 @@ export class LobbyGateway {
             return;
           }
 
-          const providerIds = normalizeProviderTypes(result.parsed.provider_type);
+          const rawProviderIds = result.parsed.provider_type;
+          const providerIds = rawProviderIds.length === 0 ? ALL_PROVIDER_IDS : rawProviderIds;
 
           subscribed = true;
           this.sessionManager.activateSubscription(clientId, providerIds);
@@ -69,6 +64,18 @@ export class LobbyGateway {
             status: 'SUCCESS',
             providers: providerIds,
           }));
+          this.orchestrator?.onClientConnected();
+
+          for (const providerId of providerIds) {
+            const snapshot = await this.lobbyStateManager?.getSnapshotForProvider(providerId);
+            if (snapshot && snapshot.length > 0) {
+              ws.send(JSON.stringify({
+                event: 'LOBBY_SNAPSHOT',
+                providerId,
+                data: snapshot,
+              }));
+            }
+          }
 
         } catch {
           ws.send(JSON.stringify({
@@ -81,6 +88,7 @@ export class LobbyGateway {
 
       ws.on('close', () => {
         this.sessionManager.removeSession(clientId);
+        if (subscribed) this.orchestrator?.onClientDisconnected();
         console.log(`[Gateway] Cliente ${clientId} desconectado.`);
       });
     });

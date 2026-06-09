@@ -44,6 +44,26 @@ export class WebSocketLogger {
     );
   }
 
+  saveOnlyError(payload: unknown): void {
+
+    const content = `
+
+========== ${this.providerName.toUpperCase()} RESPONSE ERROR ==========
+
+${JSON.stringify(payload, null, 2)}
+
+`;
+
+    fs.appendFileSync(
+      this.logFilePath,
+      content
+    );
+
+    console.log(
+      `📝 ${this.providerName} response ERROR saved`
+    );
+  }
+
   save(payload: unknown): void {
 
     if (this.counter >= this.maxMessages) {

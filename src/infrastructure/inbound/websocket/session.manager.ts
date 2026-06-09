@@ -43,4 +43,8 @@ export class SessionManager {
   public getSubscribedClients(): ClientSession[] {
     return Array.from(this.sessions.values()).filter(s => s.isSubscribed);
   }
+
+  public getTotalSessionCount(): number {
+    return this.sessions.size;
+  }
 }
