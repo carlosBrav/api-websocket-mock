@@ -31,14 +31,14 @@ async function bootstrap() {
   const lobbyStateManager = new LobbyStateManager(sessionManager);
   const validator = new DefaultSubscriptionValidator();
 
-  const evolutionConnector = startEvolution(lobbyStateManager, new EvolutionAdapter());
+  //const evolutionConnector = startEvolution(lobbyStateManager, new EvolutionAdapter());
   // startEzugi(lobbyStateManager, new EzugiAdapter());
   const pragmaticConnector = startPragmatic(lobbyStateManager, new PragmaticAdapter());
   // startPlaytech(lobbyStateManager, new PlaytechAdapter());
 
   const orchestrator = new ProviderOrchestrator(
     [
-      evolutionConnector as EvolutionConnector,
+      //evolutionConnector as EvolutionConnector,
       pragmaticConnector as PragmaticConnector
     ].filter(Boolean) as IProviderConnector[]
   );
