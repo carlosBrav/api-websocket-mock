@@ -16,6 +16,7 @@ import { EzugiAdapter } from './providers/adapters/ezugi.adapter';
 import { EzugiConnector } from './providers/connectors/ezugi.connector';
 import { DefaultSubscriptionValidator } from './core/strategies/default-subscription.validator';
 import { ProviderOrchestrator } from './core/services/provider-orchestrator';
+import { IProviderConnector } from './providers/connectors/base.connector';
 
 const REDIS_ENABLED = process.env.REDIS_ENABLED === 'true';
 const PORT = parseInt(process.env.WS_PORT || '3000', 10);
@@ -28,79 +29,66 @@ async function bootstrap() {
 
   const sessionManager = new SessionManager();
   const lobbyStateManager = new LobbyStateManager(sessionManager);
-  const validator       = new DefaultSubscriptionValidator(); 
+  const validator = new DefaultSubscriptionValidator();
 
-      // ── Proveedores ────────────────────────────────────────────────────────────
-   //const evolutionConnector = startEvolution(lobbyStateManager, new EvolutionAdapter());
-    // startEzugi(lobbyStateManager, new EzugiAdapter());
-  //const pragmaticConnector = startPragmatic(lobbyStateManager, new PragmaticAdapter());
-    // startPlaytech(lobbyStateManager, new PlaytechAdapter());
+  const evolutionConnector = startEvolution(lobbyStateManager, new EvolutionAdapter());
+  // startEzugi(lobbyStateManager, new EzugiAdapter());
+  const pragmaticConnector = startPragmatic(lobbyStateManager, new PragmaticAdapter());
+  // startPlaytech(lobbyStateManager, new PlaytechAdapter());
 
   const orchestrator = new ProviderOrchestrator(
     [
-      //evolutionConnector as EvolutionConnector,
-       //pragmaticConnector as PragmaticConnector
-    ]);
+      evolutionConnector as EvolutionConnector,
+      pragmaticConnector as PragmaticConnector
+    ].filter(Boolean) as IProviderConnector[]
+  );
   const gateway = new LobbyGateway(sessionManager, validator, lobbyStateManager, orchestrator);
-
-  /* const { lobbyRealtimeRouter } = await import('./api/routes/lobbyRealTime');
-  app.use('/api/v1', lobbyRealtimeRouter); */
 
   httpServer.on('upgrade', (request, socket, head) => {
     gateway.handleUpgrade(request, socket as any, head);
-   /*  const url = request.url ?? '';
-
-    if (url === WS_PATH) {
-      gateway.handleUpgrade(request, socket as any, head);
-    } else {
-      socket.write('HTTP/1.1 404 Not Found\r\n\r\n');
-      socket.destroy();
-    } */
   });
 
-   app.get('/health', (_req, res) => {
-  const mem = process.memoryUsage();
-  res.json({
-    status: 'ok',
-    uptime: `${process.uptime().toFixed(0)}s`,
-    redis: REDIS_ENABLED ? 'enabled' : 'disabled',
-    memory: {
-      heapUsed:  `${(mem.heapUsed  / 1024 / 1024).toFixed(1)} MB`,
-      heapTotal: `${(mem.heapTotal / 1024 / 1024).toFixed(1)} MB`,
-      rss:       `${(mem.rss       / 1024 / 1024).toFixed(1)} MB`,
-    },
+  app.get('/health', (_req, res) => {
+    const mem = process.memoryUsage();
+    res.json({
+      status: 'ok',
+      uptime: `${process.uptime().toFixed(0)}s`,
+      redis: REDIS_ENABLED ? 'enabled' : 'disabled',
+      memory: {
+        heapUsed: `${(mem.heapUsed / 1024 / 1024).toFixed(1)} MB`,
+        heapTotal: `${(mem.heapTotal / 1024 / 1024).toFixed(1)} MB`,
+        rss: `${(mem.rss / 1024 / 1024).toFixed(1)} MB`,
+      },
+    });
   });
-});
 
   httpServer.listen(PORT, () => {
     console.log(`[BFF] WebSocket disponible en ws://localhost:${PORT}`);
   });
 }
 
-// ---------------------------------------------------------------------------
-// Evolution Gaming — HTTP snapshot + WebSocket streaming
-// ---------------------------------------------------------------------------
-function startEvolution(lobbyStateManager: LobbyStateManager, adapter: EvolutionAdapter): EvolutionConnector | null {
+
+function startEvolution(lobbyStateManager: LobbyStateManager, adapter: EvolutionAdapter): IProviderConnector | null {
   try {
     const connector = new EvolutionConnector((rawPayload: unknown) => {
       const patch = adapter.normalize(rawPayload);
       if (patch) lobbyStateManager.updateTableState(patch);
     });
-    connector.connectStreaming();
-    return  connector
+    //connector.connectStreaming();
+    return connector
   } catch (err: any) {
     console.error('[Evolution] No se pudo iniciar:', err.message);
     return null
   }
 }
 
-function startPragmatic(lobbyStateManager: LobbyStateManager, adapter: PragmaticAdapter): PragmaticConnector | null {
+function startPragmatic(lobbyStateManager: LobbyStateManager, adapter: PragmaticAdapter): IProviderConnector | null {
   try {
     const connector = new PragmaticConnector((rawPayload: unknown) => {
       const patch = adapter.normalize(rawPayload);
       if (patch) lobbyStateManager.updateTableState(patch);
     });
-    connector.connect();
+    //connector.connect();
     return connector
   } catch (err: any) {
     console.error('[Pragmatic] No se pudo iniciar:', err.message);

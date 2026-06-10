@@ -7,65 +7,97 @@ export class PragmaticAdapter extends ProviderAdapter {
   private readonly NAME_PROVEEDOR = 'PRAGMATIC_PROVIDER';
 
   normalize(payload: any): LobbyTablePatch | null {
-    // 1. Validación de seguridad: Pragmatic siempre envía un tableId en sus actualizaciones
     if (!payload || !payload.tableId) {
       return null;
     }
 
     const tableId = String(payload.tableId);
-    const tableType = payload.tableType; // Ejemplo: "BLACKJACK", "ROULETTE", "BACCARAT"
-    const isAvailable = payload.tableOpen; // Booleano real del documento (true/false)
+    const rawTableType = payload.tableType;
+    const isAvailable = payload.tableOpen;
 
-    // 2. Determinar el tipo de evento para el BFF de forma dinámica
+    let gameType: LobbyTablePatch['gameType'] = 'other';
+    if (rawTableType) {
+      const lowerType = rawTableType.toLowerCase();
+      if (['roulette', 'blackjack', 'baccarat', 'sicbo', 'poker'].includes(lowerType)) {
+        gameType = lowerType as LobbyTablePatch['gameType'];
+      } else if (lowerType === 'dragontiger') {
+        gameType = 'dragon-tiger';
+      }
+    }
+
     let eventType = "TABLE_UPDATED";
     if (isAvailable === true) eventType = "TABLE_OPENED";
     if (isAvailable === false) eventType = "TABLE_CLOSED";
 
-    // 3. Extraer el último resultado si el juego tiene historial (gameResult o last20Results)
     let lastResultData: any = undefined;
-    
     if (payload.gameResult && Array.isArray(payload.gameResult) && payload.gameResult.length > 0) {
-      // Tomamos el primer elemento (el más reciente) del array de resultados
       const latest = payload.gameResult[0];
       lastResultData = {
-        winningNumber: latest.result !== undefined ? String(latest.result) : undefined,
+        winningNumber: latest.result !== undefined ? Number(latest.result) : undefined, // Convertido a número por el contrato
         winner: latest.winner || undefined,
-        roundId: latest.gameId || undefined,
+        roundId: latest.gameId ? String(latest.gameId) : undefined,
       };
     } else if (payload.last20Results && Array.isArray(payload.last20Results) && payload.last20Results.length > 0) {
-      // Para Ruleta o Mega Wheel que usan 'last20Results'
       const latest = payload.last20Results[0];
       lastResultData = {
-        winningNumber: latest.result !== undefined ? String(latest.result) : undefined,
-        winner: latest.color || undefined, // En ruleta se usa el color (red/black)
-        roundId: latest.gameId || undefined,
+        winningNumber: latest.result !== undefined ? Number(latest.result) : undefined,
+        winner: latest.color || undefined,
+        roundId: latest.gameId ? String(latest.gameId) : undefined,
       };
     }
 
-    // 4. Lógica condicional exclusiva para Blackjack clásico (Asientos físicos)
-    // El subtipo 'OneBJ' maneja jugadores infinitos, por lo que se excluye de los asientos físicos
-    const isClassicBlackjack = tableType === "BLACKJACK" && payload.tableSubtype !== "OneBJ";
+    const isClassicBlackjack = gameType === "blackjack" && payload.tableSubtype !== "OneBJ";
     const availableSeats = isClassicBlackjack && typeof payload.availableSeats === 'number' 
       ? payload.availableSeats 
       : undefined;
 
-    // 5. Retornar el contrato canónico unificado mapeando los campos del PDF
+    let gameData: LobbyTablePatch['gameData'] = undefined;
+
+    if (isClassicBlackjack && payload.boxes && Array.isArray(payload.boxes)) {
+      eventType = "SEATS_UPDATED";
+      gameData = {
+        seats: payload.boxes.map((box: any, index: number) => ({
+          seatIndex: box.cardsPosition !== undefined ? box.cardsPosition : index,
+          occupied: box.status === 'Occupied',
+          status: box.status ? box.status.toUpperCase() : undefined,
+          seatCards: box.cards || undefined,
+          seatScore: box.score || undefined
+        }))
+      };
+    }
+
+    if (gameType === 'baccarat' && payload.shoeStats) {
+      gameData = {
+        statistics: {
+          shoeRoadmap: payload.roadmap || undefined,
+          baccaratStats: {
+            playerWinsCount: payload.shoeStats.playerWins || 0,
+            bankerWinsCount: payload.shoeStats.bankerWins || 0,
+            tieWinsCount: payload.shoeStats.ties || 0,
+            playerPairsCount: payload.shoeStats.playerPairs || 0,
+            bankerPairsCount: payload.shoeStats.bankerPairs || 0,
+          }
+        }
+      };
+    }
+
     return {
       external_id: `pragmatic_${tableId}`,
       idProveedor: this.ID_PROVEEDOR,
       nameProveedor: this.NAME_PROVEEDOR,
       providerTableId: tableId,
-      gameType: tableType || 'UNKNOWN',
-      eventType: eventType,
+      gameType: gameType,
+      eventType: eventType as LobbyTablePatch['eventType'],
       realtime: {
         isAvailable: isAvailable,
-        minBet: payload.tableLimits?.minBet !== undefined ? payload.tableLimits.minBet : undefined,
-        currency: payload.currency || 'EUR', // 'EUR' por defecto según el PDF
-        availableSeats: availableSeats, // Solo Blackjack clásico
-        updatedAt: this.now(), // Heredado de tu base.adapter
+        minBet: payload.tableLimits?.minBet !== undefined ? payload.tableLimits.minBet : 0,
+        maxBet: payload.tableLimits?.maxBet !== undefined ? payload.tableLimits.maxBet : undefined,
+        currency: payload.currency || 'EUR',
+        availableSeats: availableSeats, 
+        updatedAt: this.now(), 
       },
-      // Si logramos capturar un resultado del stream, lo añadimos; si no, queda limpio
-      ...(lastResultData && { lastResult: lastResultData })
+      ...(lastResultData && { lastResult: lastResultData }),
+      ...(gameData && { gameData: gameData })
     };
   }
 }

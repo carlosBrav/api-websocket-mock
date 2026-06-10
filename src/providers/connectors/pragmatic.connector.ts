@@ -89,7 +89,7 @@ export class PragmaticConnector implements IProviderConnector {
       const payload = JSON.parse(messageString);
 
       if (payload && payload.tableId) {
-        this.loggerFile?.save(payload)
+        //this.loggerFile?.save(payload)
         this.ingestionQueue.enqueue(() => this.onMessage(payload));
       } else {
         console.log('[Pragmatic] Mensaje de sistema recibido:', payload);

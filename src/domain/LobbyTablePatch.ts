@@ -19,7 +19,36 @@ export interface LobbyTablePatch {
     | 'BETTING_CLOSED'
     | 'PLAYERS_UPDATED'
     | 'SEATS_UPDATED'
-    | 'RESULT_UPDATED';
+    | 'RESULT_UPDATED'
+    | 'CARDS_UPDATED';
+  gameData?: {
+    seats?: Array<{
+      seatIndex: number;
+      occupied: boolean;
+      status?: 'AVAILABLE' | 'OCCUPIED' | 'LOCKED';
+      seatCards?: string[];
+      seatScore?: number;
+    }>;
+    
+    currentRoundCards?: {
+      dealerHand?: string[];
+      playerHand?: string[];
+      bankerHand?: string[];
+    };
+
+    statistics?: {
+      shoeRoadmap?: string[];
+      baccaratStats?: {
+        playerWinsCount: number;
+        bankerWinsCount: number;
+        tieWinsCount: number;
+        playerPairsCount?: number;
+        bankerPairsCount?: number;
+      };
+      hotNumbers?: number[];
+      coldNumbers?: number[];
+    };
+  };
   realtime: {
     isAvailable?: boolean;
     bettingOpen?: boolean;

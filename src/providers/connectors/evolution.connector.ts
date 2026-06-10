@@ -34,7 +34,7 @@ interface EvBaseMessage {
 
 interface EvStateMessage extends EvBaseMessage {
   type: "state" | "State";
-  tables: EvTable[];
+  tables: EvTable[] | Record<string, EvTable>; // Evolution puede enviar array o mapa indexado por tableId
 }
 interface EvTableAssignedMessage extends EvBaseMessage {
   type: "table_assigned" | "TableAssigned";
@@ -83,7 +83,7 @@ export class EvolutionConnector implements IProviderConnector {
     casinoKey: process.env.EVOLUTION_CASINO_KEY || '',  // NUEVO
     apiToken: process.env.EVOLUTION_API_TOKEN || '',  // NUEVO
     currency: process.env.EVOLUTION_CURRENCY || 'COP',
-    exclude: process.env.EVOLUTION_EXCLUSIONS || 'statistics,dealer',
+    exclude: process.env.EVOLUTION_EXCLUSIONS || 'statistics',
     playerUpdates: process.env.EVOLUTION_PLAYER_UPDATES || 'true',
   };
 
@@ -117,7 +117,7 @@ export class EvolutionConnector implements IProviderConnector {
     const params = new URLSearchParams({
       gameProvider: this.getGameProvider(),
       currency: this.config.currency,
-      //exclude: this.config.exclude,
+      exclude: this.config.exclude,
       //playerUpdates: this.config.playerUpdates,
     });
     const base = `https://${this.config.licenseeHostname}/api/lobby/v1/${this.config.casinoId}/live`;
@@ -165,13 +165,20 @@ export class EvolutionConnector implements IProviderConnector {
 
       this.ws.on("message", (data: WebSocket.Data) => {
         try {
-          const raw = data.toString();
+          let raw: string;
+          if (Buffer.isBuffer(data)) {
+            raw = data.toString('utf8');
+          } else if (Array.isArray(data)) {
+            raw = Buffer.concat(data as Buffer[]).toString('utf8');
+          } else {
+            raw = data.toString();
+          }
           const message = JSON.parse(raw) as EvMessage;
           /*  if (message.id) {
              this.handleSequencing(message.id);
            }
   */
-          this.loggerFile?.save(message)
+          //this.loggerFile?.save(message)
           this.processEvent(message);
         } catch (err: any) {
           console.error("[WSS] Error al procesar el frame:", err.message);
@@ -211,13 +218,21 @@ export class EvolutionConnector implements IProviderConnector {
     switch (message.type) {
       case "state":
       case "State":
-        // Batch inicial: normalizamos cada mesa como un TABLE_OPENED
-        for (const table of message.tables) {
-          this.ingestionQueue.enqueue(() => this.onMessage({
-            type: "table_assigned",
-            id: message.id,
-            table,
-          }));
+        // Evolution puede enviar tables como array o como objeto indexado por tableId
+        // { "clabetstack0001": { tableId, name, ... }, ... }
+        {
+          const tablesRaw = message.tables;
+          const tablesArray: EvTable[] = Array.isArray(tablesRaw)
+            ? tablesRaw
+            : Object.values(tablesRaw as Record<string, EvTable>);
+
+          for (const table of tablesArray) {
+            this.ingestionQueue.enqueue(() => this.onMessage({
+              type: "table_assigned",
+              id: message.id,
+              table,
+            }));
+          }
         }
         break;
 

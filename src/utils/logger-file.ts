@@ -18,6 +18,7 @@ export class WebSocketLogger {
   private counter: number;
 
   private readonly logFilePath: string;
+  private readonly logErrorFilePath: string;
 
   constructor({
     providerName,
@@ -33,6 +34,10 @@ export class WebSocketLogger {
     this.logFilePath = path.join(
       process.cwd(),
       `${providerName}-responses.txt`
+    );
+     this.logErrorFilePath = path.join(
+      process.cwd(),
+      `${providerName}-responses-error.txt`
     );
 
     /**
@@ -55,7 +60,7 @@ ${JSON.stringify(payload, null, 2)}
 `;
 
     fs.appendFileSync(
-      this.logFilePath,
+      this.logErrorFilePath,
       content
     );
 
