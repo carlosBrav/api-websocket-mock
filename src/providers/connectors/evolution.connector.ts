@@ -202,7 +202,7 @@ export class EvolutionConnector implements IProviderConnector {
       });
 
       this.ws.on("error", (error: Error) => {
-        console.error("[WSS] Error en el socket:", error.message);
+        console.error("[WSS] Error en el socket EVOLUTION:", error.message);
         this.ws?.close();
       });
     } catch (error: any) {
